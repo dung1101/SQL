@@ -1,5 +1,5 @@
-# 1.Cài đặt trên ubuntu
-## 1.1 Các bước cài đặt mysql 5.5
+# 1.Cài đặt 
+## 1.1 Cài đặt mysql 5.5 trên ubuntu server 
 ```
 apt-get update
 apt-get install mysql-server
@@ -11,7 +11,7 @@ mysql_secure_installation
 #kích hoạt 
 mysql_install_db
 ```
-## 1.2 Các bước cài đặt mariadb 5.5.59
+## 1.2 Cài đặt mariadb 5.5.59 trên ubuntu server 
 ```
 apt-get update
 apt-get install mariadb-server
@@ -23,7 +23,14 @@ mysql_secure_installation
 #kích hoạt 
 mysql_install_db
 ```
-## port mặc định của mysql,mariadb là 3306
+## 1.3 Cài đặt mysql community 5.5.59 trên window 7
+* Lên trang chủ mysql download bộ cài về rồi ấn next 
+* Trong quá trinh cài đặt sẽ tạo mật khẩu cho tài khoản root
+## 1.4 Cài đặt mysql workbench 6.3 trên window 7
+đây là tool hỗ trợ làm việc với mysql thông qua GUI
+* Lên trang chủ mysql download bộ cài về rồi ấn next 
+
+`port mặc định của mysql,mariadb là 3306`
 # 2.Đăng nhập và sử dụng
 ## 2.1 Đăng nhập bằng cmd
 ### Đăng nhập
@@ -47,4 +54,4 @@ mysql -u root -p
 |UPDATE nguoi SET ten ="Nguyen Van A" WHERE nguoi.ten ="NV A";|thay đổi thông tin|
 |DELETE FROM nguoi WHERE ten ='Nguyen Van A';|xóa một hàng(đối tượng)|
 ## 2.2 Đăng nhập bằng GUI
-Cài mysql workbench để làm việc thông qua GUI
+Sử dụng mysql workbench nhập user và pwd để đăng nhập và sử dụng
