@@ -56,6 +56,8 @@ mysql -u root -p
 ## 2.2 Đăng nhập bằng GUI
 Sử dụng mysql workbench nhập user và pwd để đăng nhập và sử dụng
 ### Tạo database
-![](../image/tao_db.png)
+![](../image/tao_db.PNG)
 ### Tạo table
-![](../image/tao_table.png)
+![](../image/tao_table.PNG)
+### Tạo các field
+![](../image/tao_cac_field.PNG)
