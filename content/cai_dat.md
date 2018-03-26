@@ -55,3 +55,7 @@ mysql -u root -p
 |DELETE FROM nguoi WHERE ten ='Nguyen Van A';|xóa một hàng(đối tượng)|
 ## 2.2 Đăng nhập bằng GUI
 Sử dụng mysql workbench nhập user và pwd để đăng nhập và sử dụng
+### Tạo database
+![](../image/tao_db.png)
+### Tạo table
+![](../image/tao_table.png)
