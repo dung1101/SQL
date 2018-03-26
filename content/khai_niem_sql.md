@@ -20,7 +20,7 @@ Các lệnh SQL chuẩn để tương tác với Relational Database là CREATE,
 ### DDL (Data Definition Language) – Ngôn ngữ định nghĩa dữ liệu
 * Lệnh CREATE: Tạo một bảng, một View của bảng, hoặc đối tượng khác trong Database.
 * Lệnh ALTER: Sửa đổi một đối tượng Database đang tồn tại, ví dụ như một bảng.
-* Lệnh REMOVE: Xóa toàn bộ một bảng, một View của bảng hoặc đối tượng khác trong một Database.
+* Lệnh DROP: Xóa toàn bộ một bảng, một View của bảng hoặc đối tượng khác trong một Database.
 ### DML (Data Manipulation Language) – Ngôn ngữ thao tác dữ liệu
 * Lệnh SELECT: Lấy các bản ghi cụ thể từ một hoặc nhiều bảng.
 * Lệnh INSERT: Tạo một bản ghi.
@@ -29,3 +29,19 @@ Các lệnh SQL chuẩn để tương tác với Relational Database là CREATE,
 ### DCL (Data Control Language) – Ngôn ngữ điều khiển dữ liệu
 * Lệnh GRANT: Trao một quyền tới người dùng.
 * Lệnh REVOKE: Thu hồi quyền đã trao cho người dùng.
+### Ví dụ 
+```
+CREATE DATABASE mydb;
+USE mydb;
+CREATE TABLE mytable ( id INT PRIMARY KEY, name VARCHAR(20) );
+INSERT INTO mytable VALUES ( 1, 'Will' );
+INSERT INTO mytable VALUES ( 2, 'Marry' );
+INSERT INTO mytable VALUES ( 3, 'Dean' );
+SELECT id, name FROM mytable WHERE id = 1;
+UPDATE mytable SET name = 'Willy' WHERE id = 1;
+SELECT id, name FROM mytable;
+DELETE FROM mytable WHERE id = 1;
+SELECT id, name FROM mytable;
+DROP DATABASE mydb;
+SELECT count(1) from mytable; gives the number of records in the table
+```
