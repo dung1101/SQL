@@ -10,43 +10,38 @@ Dữ liệu trong file text sẽ được tải vào bảng có tên cùng với
 * Giá trị text phải được đóng bằng dấu nháy đơn (') hoặc nháy kép (").
 * Các giá trị cách bởi dấu phẩy (,).
 * Các giá trị phải được sắp theo thứ tự tương ứng
+
 Ví dụ SinhVien.txt
 ```
 'Chau','Viet','Cuong','6789'
 ```
 ## 1.2 Import từ file SQL
-Một cách khác để import dữ liệu đó là thực thi hàng loại các câu lệnh sql từ một file *.sql (hay còn gọi là batching).
-Một mẫu ví dụ về file data.sql như sau :
+Một cách khác để import dữ liệu đó là thực thi hàng loại các câu lệnh sql từ một file  .sql (hay còn gọi là batching).Một mẫu ví dụ về file data.sql như sau :
 ```
-USE QLBanHang;
-INSERT INTO Customers (Customer_ID, Last_Name, First_Name)
-VALUES(NULL, "Nguyen Minh","Thanh");
-INSERT INTO Customers (Customer_ID, Last_Name, First_Name)
-VALUES(NULL, "Nguyen Thien","Nam");
-INSERT INTO Customers (Customer_ID, Last_Name, First_Name)
-VALUES(NULL, "Nguyen Khoa","Danh");
+USE test;
+INSERT INTO SinhVien (Ho, Dem, Ten,MS)
+VALUES(NULL, "Nguyen", "Minh","Thanh","6526");
+INSERT INTO SinhVien (Ho, Dem, Ten,MS)
+VALUES(NULL, "Nguyen", "Thien","Nam","6526");
+INSERT INTO SinhVien (Ho, Dem, Ten,MS)
+VALUES(NULL, "Nguyen", "Khoa","Danh","7426");
 ```
-Để thực thi file sql ta sẽ sử dụng lệnh sau :
+Để thực thi file sql ta sẽ sử dụng 1 trong các câu lệnh sau :
+```
 Load Data Infile filename.sql Into Table table_name;
-Vd : LOAD DATA INFILE "C:\MyDocs\data.sql" INTO TABLE Orders;
-Nếu muốn chỉ định file sql nằm trên máy cục bộ, cá nhân :
 Load Data Local Infile filename.sql Into Table table_name;
-Để thay thế các dòng giá trị trùng nhau :
 Load Data Local Infile filename.sql Replace Into Table table_name;
-Tuy nhiên, ta cũng có thể sử dụng phương thức Load Data này cho các file text
 Load Data Infile filename.txt Into Table table_name;
-Các tuỳ chọn được dùng thêm khi tải dữ liệu từ file text (được dùng sau từ khoá
-Fields) :
- Terminated by char
- Enclosed by char
- Escaped by char
+```
+Các tuỳ chọn được dùng thêm khi tải dữ liệu từ file text (được dùng sau từ khoá Fields) :
+* Terminated by char
+* Enclosed by char
+* Escaped by char
 Vd :
-LOAD DATA INFILE "Orders.txt" REPLACE INTO TABLE Orders
-FIELDS TERMINATED BY ',' ENCLOSED BY '"';
-Chỉ định các cột được tải dữ liệu:
-vd : LOAD DATA INFILE "/home/Order.txt"
-INTO TABLE Orders
-(Order_Number, Order_Date, Customer_ID);
+```
+LOAD DATA INFILE "Orders.txt" REPLACE INTO TABLE Orders FIELDS TERMINATED BY ',' ENCLOSED BY '"';
+LOAD DATA INFILE "/home/Order.txt"INTO TABLE Orders(Order_Number, Order_Date, Customer_ID);
+```
 # 2 Export
 ## 2.1 mysqldumb
 ```
@@ -130,6 +125,6 @@ ENCLOSED BY ' " ' LINES TERMINATED BY '\r\n';
 ```
 ## 2.3 mysql client
 ```
-mysql –e "Select column_names from table_name" --skip-column-names \ database_name > filename.txt
-mysql -e "SELECT * FROM SinhVien" --skip-column-names \ test > SinhVien.txt
+mysql –e -u user_name -p "Select column_names from table_name" --skip-column-names \ database_name > filename.txt
+mysql -e -u root -p "SELECT * FROM SinhVien" --skip-column-names \ test > SinhVien.txt
 ```
