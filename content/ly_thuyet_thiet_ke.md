@@ -66,7 +66,7 @@ Lớp con kế thừa từ nhiều lớp cha
 * miền giá trị : kiểu dữ liệu
 * bộ : hàng
 ## Lược đồ quan hệ 
-TenBang(TenThuocTinh...)
+TenBang(TenThuocTinh...)<br>
 NHANVIEN(MANV,TENNV,NGAYSINH,SĐT)
 ## Các đặc trưng của quan hệ
 ### Khóa chính(PK)
@@ -88,6 +88,5 @@ NHANVIEN(MANV,TENNV,NGAYSINH,SĐT)
 ![](../image/lien_ket_n_n.PNG)
 * Thuộc tính đa trị : trở thành một quan hệ cùng tên với thuộc tính là các thuộc tính đa trạ và thuộc tính khóa của quan hệ trở thành khóa ngoại.KHóa chính bao gồm khóa ngoại và thuộc tính đa trị
 * liên kết đa ngôi(n>2) Chuyển thành một quan hệ Có cùng tên với tên mối liên kết đa ngôi.Thuộc tính gồm thuộc tính liên kết, các khóa liên kết.Khóa chính là tổng hợp các khóa của tập các thực thể tham gia liên kết.
-#### Ví dụ
-![](../image/vi_du_erd.PNG)
+
 
