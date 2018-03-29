@@ -12,11 +12,20 @@
 ## Ký hiệu trong sơ đồ thực thể liên kết (ERD)
 ![](../image/ky_hieu_er.png)
 ## Ràng buộc (min,max) 
-(0,1) ,(1,1), (0,n), (1,n)
+* (0,1) 
+* (1,1)
+* (0,n)
+* (1,n)
 ![](../image/rang_buoc_min_max.png)
-## Loại ràng buộc 
+## Loại ràng buộc
+* Ràng buộc tham gia toàn bộ : kí hiệu -> hoặc ==
+* Ràng buộc tham gia bộ phận : kí hiệu --
 ![](../image/loai_rang_buoc.png)
 ## Thực thể yếu 
+* Là thực thể không có các thuộc tính khóa,
+* Thực thể yếu phải tham gia vào mối quan hệ mà trong đó có một tập thực thể chính (kiểu thực thể chủ)
+* Thực thể yếu được xác định bằng cách liên kết với các thực thể chủ (liên kết xác định)
+* Mô tả kiểu thực thể yếu và liên kết xác định bằng hình chữ nhật và hình thoi nét đôi
 ![](../image/thuc_the_yeu.png)
 ## Các bước thiết kế ER
 <ol>
@@ -29,7 +38,7 @@
 </ol>
 ![](../image/erd.png)
 # 3.EER
-Mở rộng của ER 
+EER là sự mở rộng của ER bằng cách thêm vào một số các khái niệm trừu tượng (abstraction) và thể hiện các ràng buộc rõ ràng hơn.
 ## Lớp con
 Lớp kế thừa từ lớp khác
 ![](../image/lop_con.png)
