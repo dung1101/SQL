@@ -10,23 +10,27 @@
 * n-1
 * n-n
 ## Ký hiệu trong sơ đồ thực thể liên kết (ERD)
-![](../image/ky_hieu_er.png)
+
+![](../image/ky_hieu_er.PNG)
 ## Ràng buộc (min,max) 
 * (0,1) 
 * (1,1)
 * (0,n)
 * (1,n)
-![](../image/rang_buoc_min_max.png)
+
+![](../image/rang_buoc_min_max.PNG)
 ## Loại ràng buộc
 * Ràng buộc tham gia toàn bộ : kí hiệu -> hoặc ==
 * Ràng buộc tham gia bộ phận : kí hiệu --
-![](../image/loai_rang_buoc.png)
+
+![](../image/loai_rang_buoc.PNG)
 ## Thực thể yếu 
 * Là thực thể không có các thuộc tính khóa,
 * Thực thể yếu phải tham gia vào mối quan hệ mà trong đó có một tập thực thể chính (kiểu thực thể chủ)
 * Thực thể yếu được xác định bằng cách liên kết với các thực thể chủ (liên kết xác định)
 * Mô tả kiểu thực thể yếu và liên kết xác định bằng hình chữ nhật và hình thoi nét đôi
-![](../image/thuc_the_yeu.png)
+
+![](../image/thuc_the_yeu.PNG)
 ## Các bước thiết kế ER
 <ol>
 <li>Xác định tập thực thể</li>
@@ -36,28 +40,33 @@
 <li>Quyết định thuộc tính khóa</li>
 <li>Xác định ràng buộc(tỉ số min max)</li>
 </ol>
-![](../image/erd.png)
+
+![](../image/erd.PNG)
 # 3.EER
 EER là sự mở rộng của ER bằng cách thêm vào một số các khái niệm trừu tượng (abstraction) và thể hiện các ràng buộc rõ ràng hơn.
 ## Lớp con
 Lớp kế thừa từ lớp khác
-![](../image/lop_con.png)
+
+![](../image/lop_con.PNG)
 ## Ràng buộc rời rạc
 Các lớp con độc lập với nhau<br>
-![](../image/roi_rac.png)
+
+![](../image/roi_rac.PNG)
 ## Ràng buộc chồng chéo
 Các lớp con này có thể ràng buộc với nhau : lớp con này có thể nằm trong một hay nhiều lớp con khác<br>
-![](../image/chong_cheo.png)
+
+![](../image/chong_cheo.PNG)
 ## Ràng buộc kiêu hợp
 Lớp con kế thừa từ nhiều lớp cha
-![](../image/kieu_hop.png)
+
+![](../image/kieu_hop.PNG)
 # 4.Mô hình dữ liệu quan hệ
-quan hệ : bảng
-thuộc tính : cột
-miền giá trị : kiểu dữ liệu
-bộ : hàng
+* quan hệ : bảng
+* thuộc tính : cột
+* miền giá trị : kiểu dữ liệu
+* bộ : hàng
 ## Lược đồ quan hệ 
-TenBang(TenThuocTinh...)
+TenBang(TenThuocTinh...)<br>
 NHANVIEN(MANV,TENNV,NGAYSINH,SĐT)
 ## Các đặc trưng của quan hệ
 ### Khóa chính(PK)
@@ -67,18 +76,19 @@ NHANVIEN(MANV,TENNV,NGAYSINH,SĐT)
 ### Khóa ngoại(FK)
 * Khóa ngoại của một quan hệ là thuộc tính của quan hệ mà thuộc tính đó là khóa chính của một quan hệ khác.
 * Có thể có nhiều khóa ngoại cùng tham chiếu đén một khóa chính
-![](../image/rang_buoc_tham_chieu.png)
+![](../image/rang_buoc_tham_chieu.PNG)<br>
 ### Quy tắc chuyển đổi ERD sang lược đồ quan hệ
 * Mỗi kiểu thực thể(Trừ thực thể yếu)sẽ chuyển thành một quan hệ có cung tên và tập thuộc tính
 * Thực thể yếu chuyển thành một quan hệ cùng tên thêm vào khóa thuộc tính khóa của thực thể liên quan và khóa chính được xác định từ thuộc tính khóa mới thêm và khóa cục bộ
 * Liên kết 1-1:Hoặc thêm vào quan hệ thứ nhất  thuộc tính khóa của quan hệ thứ 2 làm khóa ngoài, và thuộc tính liên kết.Hoặc trộn 2 quan hệ trong trường hợp cả 2 đều tham gia toàn bộ
-![](../image/lien_ket_1_1.png)
+![](../image/lien_ket_1_1.PNG)<br>
 * Liên kết 1-n :Thêm vào quan hệ (phía) nhiều thuộc tính khóa của quan hệ (phía)một
-![](../image/lien_ket_1_n.png)
-* Liên kết n-n: Tạo một quan hệ mới mà tên quan hệ là tên của mối liên kết,thuộc tính là thuộc tính khóa của những thực thể liên quan và thuộc tính liên kết
-![](../image/lien_ket_n_n.png)
+![](../image/lien_ket_1_n.PNG)<br>
+* Liên kết n-n: Tạo một quan hệ mới mà tên quan hệ là tên của mối liên kết,thuộc tính là thuộc tính khóa của những thực thể liên quan và thuộc tính liên kết<br>
+![](../image/lien_ket_n_n.PNG)
 * Thuộc tính đa trị : trở thành một quan hệ cùng tên với thuộc tính là các thuộc tính đa trạ và thuộc tính khóa của quan hệ trở thành khóa ngoại.KHóa chính bao gồm khóa ngoại và thuộc tính đa trị
 * liên kết đa ngôi(n>2) Chuyển thành một quan hệ Có cùng tên với tên mối liên kết đa ngôi.Thuộc tính gồm thuộc tính liên kết, các khóa liên kết.Khóa chính là tổng hợp các khóa của tập các thực thể tham gia liên kết.
+<<<<<<< HEAD
 #### Ví dụ
 ![](../image/vi_du_erd.png)
 # 5.Chuẩn hóa cơ sơ dữ liệu quan hệ
@@ -175,5 +185,7 @@ Lược đồ quan hệ R được gọi là ở dạng chuẩn Boyce-Codd (BCNF
 ![](../image/chuan_hoa_bcnf.PNG)
 
 
+=======
+>>>>>>> afa563efa7e981d118d370eaa94ae96355864c6f
 
 
