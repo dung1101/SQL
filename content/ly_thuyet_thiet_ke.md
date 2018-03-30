@@ -90,7 +90,7 @@ NHANVIEN(MANV,TENNV,NGAYSINH,SĐT)
 * liên kết đa ngôi(n>2) Chuyển thành một quan hệ Có cùng tên với tên mối liên kết đa ngôi.Thuộc tính gồm thuộc tính liên kết, các khóa liên kết.Khóa chính là tổng hợp các khóa của tập các thực thể tham gia liên kết.
 <<<<<<< HEAD
 #### Ví dụ
-![](../image/vi_du_erd.png)
+![](../image/vi_du_erd.PNG)
 # 5.Chuẩn hóa cơ sơ dữ liệu quan hệ
 ## 5.1.Phụ thuộc hàm
 Ví dụ
@@ -124,37 +124,35 @@ Thỏa mãn dạng chuẩn 1
 
 SV(__Masv__, Hoten,Gioitinh,Ngaysinh, Noisinh)
 Không thỏa mãn do thuộc tính Hoten có chứa 3 giá trị : HO,TENDEM,TEN
-
+```
 NV_DA(__Mada__,Tenda,Manv,Sogio)
+
 |Mada|Tenda|Manv|Sogio|
 |----|-----|----|-----|
 |C1|iptbles|nv1|120|
 |||nv2|100|
 |C2|firewall|nv3|120|
 |||nv4|150|
-<br>Không thỏa mãn do thuộc tính Manv,Sogio chứa nhiều giá trị
-```
+
+Không thỏa mãn do thuộc tính Manv,Sogio chứa nhiều giá trị
 #### Chuẩn hóa 1NF
-* thuộc tính phức hợp ->các thuộc tính đơn
-```
+* thuộc tính phức hợp ->các thuộc tính đơn<br>
 SV(Masv, __Hoten__, Gioitinh,Ngaysinh, Noisinh)
 ->
 SV(Masv, __Ho__, __Dem__, __Ten__, Gioitinh,Ngaysinh, Noisinh)
-```
-* thuộc tính đa trị hoặc lặp -> tách quan hệ
-```
+* thuộc tính đa trị hoặc lặp -> tách quan hệ<br>
 NV_DA(__Mada__,Tenda,Manv,Sogio)
 ->
 NV_DA(__Mada__,Tenda)
 NV_DA_CT(__Mada__,__Manv__,Sogio)
-```
 ### 5.2.2.Dang chuẩn 2 (2NF)
 Một  lược đồ quan hệ R ở dạng chuẩn 2 (2NF) nếu: 
 * R thỏa mãn chuẩn 1
 * Mọi thuộc tính không khóa của R phụ thuộc hàm đầy đủ vào khóa chính.Tức là: mỗi thuộc tính không khóa không phụ thuộc bộ phận vào khóa của R
 #### Chuẩn hóa 2NF
-![](../image/chuan_hoa_2nf.PNG)
-<br>
+
+![](../image/chuan_hoa_2nf.png)
+
 ### 5.2.3.Dạng chuẩn 3 (3NF)
 Lược đồ R là dạng chuẩn 3 nếu:
 * Thỏa mãn chuẩn 2
@@ -162,30 +160,23 @@ Lược đồ R là dạng chuẩn 3 nếu:
 #### Chuẩn hóa 3NF 
 * Tách quan hệ mới gồm các thuộc tính phụ thuộc  bắc cầu và thuộc tính không khóa mà nó phụ thuộc vào.
 * Loại các thuộc tính phụ thuộc bắc cầu vào thuộc tính khóa trong quan hệ ban đầu;
-```
-NV_DV(__Manv__, Hoten, Ngaysinh, Madv, Tendv, MaQl)
-Manv->Madv
-Madv->Tendv ==> Manv -> Tendv : bắc cầu
-MaDv->MaQl ==> Manv -> MaQl : bắc cầu
+<br>NV_DV(__Manv__, Hoten, Ngaysinh, Madv, Tendv, MaQl)<br>
+Manv->Madv<br>
+Madv->Tendv ==> Manv -> Tendv : bắc cầu<br>
+MaDv->MaQl ==> Manv -> MaQl : bắc cầu<br>
 
-DV(__Madv__, Tendv, MaQl)
-NV(__Manv__, Hoten, Ngaysinh, Madv)
+DV(__Madv__, Tendv, MaQl)<br>
+NV(__Manv__, Hoten, Ngaysinh, Madv)<br>
 
-```
 ### 5.2.4.Dạng chuẩn Boyce-Codd (BCNF) 
 Lược đồ quan hệ R được gọi là ở dạng chuẩn Boyce-Codd (BCNF) nếu:
 * Thỏa mãn dạng chuẩn 3NF 
 * Không có thuộc tính khóa phụ thuộc hàm vào thuộc tính không khóa
 #### Chuẩn hóa BCNF
-<ol>
-<li>Tách các thuộc tính không khóa và thuộc tính khóa phụ thuộc  hàm  vào thuộc tính không khóa đó thành quan hệ mới, thuộc tính không khóa  đó trở thành khóa trong quan hệ mới.</li>
-<li>Loại các thuộc tính khóa ở bước 1 khỏi lược đồ gốc</li>
-<li>Bổ sung thuộc tính không khóa xác định hàm thuộc tính khóa đã loại bỏ (bước 2) vào khóa của quan hệ gốc</li>
-</ol>
+* Tách các thuộc tính không khóa và thuộc tính khóa phụ thuộc  hàm  vào thuộc tính không khóa đó thành quan hệ mới, thuộc tính không khóa đó trở thành khóa trong quan hệ mới
+* Loại các thuộc tính khóa ở bước 1 khỏi lược đồ gốc
+* Bổ sung thuộc tính không khóa xác định hàm thuộc tính khóa đã loại bỏ (bước 2) vào khóa của quan hệ gốc
+
 ![](../image/chuan_hoa_bcnf.PNG)
-
-
-=======
->>>>>>> afa563efa7e981d118d370eaa94ae96355864c6f
 
 
