@@ -81,4 +81,99 @@ NHANVIEN(MANV,TENNV,NGAYSINH,SĐT)
 * liên kết đa ngôi(n>2) Chuyển thành một quan hệ Có cùng tên với tên mối liên kết đa ngôi.Thuộc tính gồm thuộc tính liên kết, các khóa liên kết.Khóa chính là tổng hợp các khóa của tập các thực thể tham gia liên kết.
 #### Ví dụ
 ![](../image/vi_du_erd.png)
+# 5.Chuẩn hóa cơ sơ dữ liệu quan hệ
+## 5.1.Phụ thuộc hàm
+Ví dụ
+```
+SINHVIEN(__MASV__,HO,TENDEM,TEN,NGAYSINH,NOISINH,LOP)
+MASV -> HO,TENDEM,TEN,NGAYSINH,NOISINH,LOP
+SINHVIEN_DIEM(__MASV__,__MAMON__,DIEM,NGAYTHI)
+MASV,MAMON -> DIEM
+MUON (__SOTHE,MASACH__,TENSACH,TENGUOIMUON,NGAYMUON,NGAYTRA)
+SOTHE -> TENGUOIMUON
+MASACH -> TENSACH
+SOTHE,MASACH,NGAYMUON -> NGAYTRA
+```
+### Quy tắc phụ thuộc hàm
+![](../image/quy_tac_pth.PNG)
+### Các loại phụ thuộc hàm
+* Phụ thuộc hàm đầy đủ: Một phụ thuộc hàm X -> Y  gọi là phụ thuộc hàm đầy đủ nếu khi loại bỏ bất kỳ thuộc tính A nào ra khỏi X thì phụ thuộc hàm không còn đúng nữa. 
+* Phụ thuộc hàm bộ phận: Một phụ thuộc hàm  X -> Y là phụ thuộc hàm bộ phận nếu có thể bỏ một thuộc tính A ra khỏi X mà phụ thuộc hàm vẫn đúng.
+![](../image/cac_loai_pth.PNG)
+## 5.2.Chuẩn hóa
+Chuẩn hóa là quá trình phân tích lược đồ quan hệ dựa trên các phụ thuộc hàm và khóa chính để đạt được:
+* Giảm tối đa sự dư thừa
+* Giảm tối đa các thao tác cập nhật dị thường
+### 5.2.1.Dạng chuẩn 1 (1NF)
+* Miền giá trị của mỗi thuộc tính chỉ chứa giá trị nguyên tử (đơn, không phân chia được)
+* Giá trị của mỗi thuộc tính trong các bộ là một giá trị đơn (đơn trị)
+<br>Ví dụ:
+```
+SV_DIEM(__Masv__,__Mamon__, Diem)
+Thỏa mãn dạng chuẩn 1
+
+SV(__Masv__, Hoten,Gioitinh,Ngaysinh, Noisinh)
+Không thỏa mãn do thuộc tính Hoten có chứa 3 giá trị : HO,TENDEM,TEN
+
+NV_DA(__Mada__,Tenda,Manv,Sogio)
+|Mada|Tenda|Manv|Sogio|
+|----|-----|----|-----|
+|C1|iptbles|nv1|120|
+|||nv2|100|
+|C2|firewall|nv3|120|
+|||nv4|150|
+<br>Không thỏa mãn do thuộc tính Manv,Sogio chứa nhiều giá trị
+```
+#### Chuẩn hóa 1NF
+* thuộc tính phức hợp ->các thuộc tính đơn
+```
+SV(Masv, __Hoten__, Gioitinh,Ngaysinh, Noisinh)
+->
+SV(Masv, __Ho__, __Dem__, __Ten__, Gioitinh,Ngaysinh, Noisinh)
+```
+* thuộc tính đa trị hoặc lặp -> tách quan hệ
+```
+NV_DA(__Mada__,Tenda,Manv,Sogio)
+->
+NV_DA(__Mada__,Tenda)
+NV_DA_CT(__Mada__,__Manv__,Sogio)
+```
+### 5.2.2.Dang chuẩn 2 (2NF)
+Một  lược đồ quan hệ R ở dạng chuẩn 2 (2NF) nếu: 
+* R thỏa mãn chuẩn 1
+* Mọi thuộc tính không khóa của R phụ thuộc hàm đầy đủ vào khóa chính.Tức là: mỗi thuộc tính không khóa không phụ thuộc bộ phận vào khóa của R
+#### Chuẩn hóa 2NF
+![](../image/chuan_hoa_2nf.PNG)
+<br>
+### 5.2.3.Dạng chuẩn 3 (3NF)
+Lược đồ R là dạng chuẩn 3 nếu:
+* Thỏa mãn chuẩn 2
+* Không có thuộc tính không khoá nào của R là phụ thuộc bắc cầu vào khoá chính. 
+#### Chuẩn hóa 3NF 
+* Tách quan hệ mới gồm các thuộc tính phụ thuộc  bắc cầu và thuộc tính không khóa mà nó phụ thuộc vào.
+* Loại các thuộc tính phụ thuộc bắc cầu vào thuộc tính khóa trong quan hệ ban đầu;
+```
+NV_DV(__Manv__, Hoten, Ngaysinh, Madv, Tendv, MaQl)
+Manv->Madv
+Madv->Tendv ==> Manv -> Tendv : bắc cầu
+MaDv->MaQl ==> Manv -> MaQl : bắc cầu
+
+DV(__Madv__, Tendv, MaQl)
+NV(__Manv__, Hoten, Ngaysinh, Madv)
+
+```
+### 5.2.4.Dạng chuẩn Boyce-Codd (BCNF) 
+Lược đồ quan hệ R được gọi là ở dạng chuẩn Boyce-Codd (BCNF) nếu:
+* Thỏa mãn dạng chuẩn 3NF 
+* Không có thuộc tính khóa phụ thuộc hàm vào thuộc tính không khóa
+#### Chuẩn hóa BCNF
+<ol>
+<li>Tách các thuộc tính không khóa và thuộc tính khóa phụ thuộc  hàm  vào thuộc tính không khóa đó thành quan hệ mới, thuộc tính không khóa  đó trở thành khóa trong quan hệ mới.</li>
+<li>Loại các thuộc tính khóa ở bước 1 khỏi lược đồ gốc</li>
+<li>Bổ sung thuộc tính không khóa xác định hàm thuộc tính khóa đã loại bỏ (bước 2) vào khóa của quan hệ gốc</li>
+</ol>
+![](../image/chuan_hoa_bcnf.PNG)
+
+
+
 
