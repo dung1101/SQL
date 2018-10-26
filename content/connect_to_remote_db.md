@@ -1,5 +1,7 @@
 # server
-- Thêm bind-address = IP mysql server vào file Ubuntu: /etc/mysql/my.cof Centos: /etc/my.cof
+- Thêm bind-address = IP mysql server vào file 
+  - Ubuntu: /etc/mysql/mysql.conf.d/mysqld.cnf 
+  - Centos: /etc/my.cof
 - `/etc/init.d/mysql restart` hoặc 'service mysql restart'
 - check port 3306: netstat -anp | grep 3306
 - `iptable -A INPUT -i all -p tcp --dport=3306 -j ACCEPT` 
