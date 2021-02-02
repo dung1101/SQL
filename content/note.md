@@ -1,3 +1,4 @@
+```
 use EformDB;
 declare @MyCursor Cursor, @userid uniqueidentifier, @visitid uniqueidentifier;
 BEGIN
@@ -17,3 +18,4 @@ BEGIN
     CLOSE @MyCursor ;
     DEALLOCATE @MyCursor;
 END;
+```
